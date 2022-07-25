@@ -24,6 +24,8 @@ async function run(): Promise<void> {
 
     const validFiles = resp.data.filter((file) => file.filename.endsWith('.php'));
 
+    core.debug(JSON.stringify(validFiles.join(' ')));
+
     core.setOutput('has_files', validFiles.length > 0);
     core.setOutput('files', validFiles.join(' '));
   } catch (error) {
