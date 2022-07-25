@@ -1,0 +1,12 @@
+name: "Yaraku Changed Files"
+description: "Provide a description here"
+author: "juhlinus"
+inputs:
+  token:
+    description: Secret GitHub API token to use for making API requests.
+    default: ${{ github.token }}
+    required: true
+
+runs:
+  using: "node16"
+  main: "dist/index.js"
