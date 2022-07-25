@@ -22,9 +22,8 @@ async function run(): Promise<void> {
       pull_number: prNumber,
     });
 
-    const validFiles = resp.data.filter((file) => file.filename.endsWith('.php'));
-
-    core.debug(JSON.stringify(validFiles.join(' ')));
+    const validFiles = resp.data.map(f => f.filename)
+      .filter((filename) => filename.endsWith('.php'));
 
     core.setOutput('has_files', validFiles.length > 0);
     core.setOutput('files', validFiles.join(' '));
