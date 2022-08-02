@@ -23,7 +23,7 @@ async function run(): Promise<void> {
     });
 
     const validFiles = resp.data.map(f => f.filename)
-      .filter((filename) => filename.endsWith('.php'));
+      .filter((filename) => filename.endsWith('.php') && filename !== 'ecs.php');
 
     core.setOutput('has_files', validFiles.length > 0);
     core.setOutput('files', validFiles.join(' '));
