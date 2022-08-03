@@ -55,7 +55,9 @@ function run() {
                 repo: repo,
                 pull_number: prNumber,
             });
-            const validFiles = resp.data.map(f => f.filename)
+            const validFiles = resp.data
+                .filter(file => file.status !== 'removed')
+                .map(f => f.filename)
                 .filter((filename) => filename.endsWith('.php') && filename !== 'ecs.php');
             core.setOutput('has_files', validFiles.length > 0);
             core.setOutput('files', validFiles.join(' '));
